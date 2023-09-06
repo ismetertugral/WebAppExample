@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "_Layout";
+}
+<style>
+    p{ font-weight: bold;}
+</style>
+<p>Partial View</p>
+@*@Html.PartialAsync("_ProjectPartial",ProjectContext.Projects)*@
+<partial name="_ProjectPartial" model="@ProjectContext.Projects"></partial>
+<hr />
+<p>Integer</p>
+@await Component.InvokeAsync("Projects","int")
+<hr />
+<p>Byte</p>
+@await Component.InvokeAsync("Projects","byte")
+<hr />
+<p>Boolean</p>
+@await Component.InvokeAsync("Projects","bool")
+<hr />
+<p>String</p>
+@await Component.InvokeAsync("Projects","string")

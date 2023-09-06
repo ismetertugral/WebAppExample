@@ -1,0 +1,7 @@
+﻿@model List<Project>
+<select class="form-select" aria-label="Default select example">
+    @foreach (var item in Model)
+    {
+        <option value="@item.Name">@(item.Description == item.Name) </option>
+    }
+</select>

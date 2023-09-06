@@ -1,0 +1,11 @@
+﻿////CLI Command////
+//Create New Project
+project_name => dotnet new --list
+dotnet new web -n project_name
+//App Run
+dotnet  run
+////Node Packet Manager////
+//Create package.json
+npm init
+//Install package
+npm i package_name

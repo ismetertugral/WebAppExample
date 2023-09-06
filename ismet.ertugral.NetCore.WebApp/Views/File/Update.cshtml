@@ -1,0 +1,24 @@
+﻿@model FileInfo
+@{
+    Layout = "_Layout";
+}
+<h3>Update File</h3>
+
+<form asp-action="Update" asp-controller="File" method="post">
+    <input type="hidden" name="oldFileName" value="@Model.FullName" />
+    <div class="form-control">
+        <label>
+            File Name: <span class="text-danger">*</span>
+        </label>
+        <input name="newFileName" class="form-control" type="text" required value="@Model.Name"/>
+    </div>
+    <div class="form-control">
+        <label>
+            File Content: <span class="text-danger">*</span>
+        </label>
+        <textarea name="fileContent" class="form-control" type="text">@File.ReadAllText(Model.FullName)</textarea>
+    </div>
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>

@@ -1,0 +1,28 @@
+﻿@model FileInfo
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <span>Sistemde Hata Oluştu!</span>
+</div>
+<div class="row">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>CreationTime</th>
+                <th>Path</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.CreationTime</td>
+                <td>@Model.FullName</td>
+            </tr>
+            <tr><th colspan="3">İçeriği</th></tr>
+            <tr><td colspan="3"><textarea style="width:100%;" disabled="disabled" wrap="hard" rows="4">@File.ReadAllText(Model.FullName)</textarea></td></tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,60 @@
+﻿@model List<ListBlogWithComment>
+@{
+    Layout = "_Layout";
+    int Count = 1;
+}
+<a class="btn btn-primary" asp-action="Create" asp-controller="Blog">Create Blog</a>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+            <th scope="col">Comments</th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">@Count</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td style="width: 1%;white-space: nowrap;">                    
+                    <a class="btn btn-warning" asp-action="Update" asp-controller="Blog" asp-route-id="@item.Id">Update</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Blog" asp-route-id="@item.Id">Delete</a>
+                </td>
+                <td>
+                    <div class="row">
+                        <div class="col-1">
+                            <a class="btn btn-primary p-1" data-bs-toggle="collapse" href="#collapseComment_@Count"
+                               role="button" aria-expanded="false" aria-controls="collapseComment_@Count">
+                                ↓
+                            </a>
+                        </div>
+                        <div class="col-11">
+                        <select style="width:auto;" class="form-select" asp-items="@(new SelectList(item.Comments,"Id","Title"))">
+                        </select>
+                        </div>
+                    </div>
+                </td>                
+            </tr>
+            <tr>
+                <td colspan="5" style="padding:0px;">
+                    <div class="collapse" id="collapseComment_@Count">
+                        <ul class="list-group">
+                            @if (item.Comments != null)
+                                @foreach (var item2 in item.Comments)
+                                {
+                                    <li class="list-group-item list-group-item-primary">↳ @item2.Title</li>
+                                }
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            Count++;
+        }
+    </tbody>
+</table>

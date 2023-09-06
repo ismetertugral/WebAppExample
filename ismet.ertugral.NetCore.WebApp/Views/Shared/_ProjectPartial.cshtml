@@ -1,0 +1,8 @@
+﻿@model List<Project>
+<select class="form-select" aria-label="Default select example">
+    <option selected>Open Partial select menu</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.Name">@item.Description</option>
+    }
+</select>

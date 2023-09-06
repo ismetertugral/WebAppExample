@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="input-group mb-3">
+    <input id="PlaceText" type="text" class="form-control" placeholder="Entry Place" aria-label="Entry Place" aria-describedby="basic-addon2" autofocus>
+    <div class="input-group-append">
+        <button id="ButtonMaps" class="btn btn-outline-secondary" type="button" onclick="GoMaps();">Search🔎</button>
+    </div>
+</div>
+<div id="PlaceMaps"></div>
+<script>
+    let _input = document.getElementById("PlaceText");
+    let _div = document.getElementById("PlaceMaps");
+    let _button = document.getElementById("ButtonMaps");
+    _input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            _button.click();
+        }
+    });
+    const GlobalPlaceInfo = '<iframe width=\"100%\" height=\"510\" id=\"gmap_canvas\" src=\"https://maps.google.com/maps?q={0}&t=&z=10&ie=UTF8&iwloc=&output=embed\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\"></iframe>';
+    function GoMaps(){      
+        _div.innerHTML = GlobalPlaceInfo.replace('{0}', _input.value);
+    }
+</script>

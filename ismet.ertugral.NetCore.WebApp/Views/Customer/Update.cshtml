@@ -1,0 +1,43 @@
+﻿@model Customer
+@{
+    Layout = "_Layout";
+}
+<h3>Update Customer</h3>
+
+<form asp-action="Update" asp-controller="Customer" method="post">
+    <div class="form-control">
+        <label>
+            Customer Name: <span class="text-danger">*</span>
+            <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+        </label>
+        <input asp-for="@Model.FirstName" class="form-control" />
+    </div>
+
+    <div class="form-control">
+        <label>
+            Customer LastName: <span class="text-danger">*</span>
+            <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+        </label>
+        <input asp-for="@Model.LastName" class="form-control" />
+    </div>
+
+    <div class="form-control">
+        <label>
+            Customer Age: <span class="text-danger">*</span>
+            <span asp-validation-for="@Model.Age" class="text-danger"></span>
+        </label>
+        <input asp-for="@Model.Age" class="form-control" />
+    </div>
+
+    <div class="form-control text-right">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+</form>
+
+@section scripts {
+    <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="\node_modules\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js"></script>
+}

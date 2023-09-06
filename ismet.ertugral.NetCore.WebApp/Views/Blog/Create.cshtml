@@ -1,0 +1,28 @@
+﻿@model BlogCreateModel
+@{
+    Layout = "_Layout";
+}
+<h5 class="mb-3">Blog Create</h5>
+<div class="container m-3">
+    <form asp-action="Create" asp-controller="Blog" method="post">
+        <div class="form-group row mb-3">
+            <label class="col-sm-2 col-form-label">Blog @nameof(Model.Name):</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="Enter @nameof(Model.Name)" name="@nameof(Model.Name)">
+                <span class="text-danger">*</span>
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row mb-3">
+            <label class="col-sm-2 col-form-label">Blog @nameof(Model.Description):</label>
+            <div class="col-sm-5">
+                <textarea type="text" class="form-control" placeholder="Enter @nameof(Model.Description)" name="@nameof(Model.Description)"></textarea> 
+                <span class="text-danger">*</span>
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="text-end col-sm-7">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout";
+}
+<h3>Create Folder</h3>
+
+<form asp-action="Create" asp-controller="Folder" method="post">
+    <div class="form-control">
+        <label>
+            Folder Name: <span class="text-danger">*</span>
+        </label>
+        <input name="folderName" class="form-control" type="text" required/>
+    </div>
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
