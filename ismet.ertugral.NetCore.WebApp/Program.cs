@@ -14,7 +14,7 @@ builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MyContext>(opt =>
 {
-    opt.UseSqlServer("server=ISMETERTUGRALNB\\SQLEXPRESS;database=EfCore;integrated security=true;TrustServerCertificate=True;");
+    opt.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=EfCore;integrated security=true;TrustServerCertificate=True;");
     opt.LogTo(Console.WriteLine, LogLevel.Information);
 });
 builder.Services.AddScoped<IUow, Uow>();
